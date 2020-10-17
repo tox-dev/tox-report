@@ -1,0 +1,18 @@
+# Vim temporary files
+.*.swp
+.*.swo
+# Python temporary files
+__pycache__
+*.pyc
+*.pyo
+*.egg-info
+# Tox directory
+.tox
+# Other generated files
+.coverage
+.coverage.*
+htmlcov
+build
+dist
+.idea
+.eggs

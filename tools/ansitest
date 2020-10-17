@@ -1,0 +1,19 @@
+#!/bin/bash
+B=`tput bold`           #BOLD
+D=`tput dim`            #DIM
+U=`tput sgr 0 1`        #UNDERLINE
+U2=`tput smul`          #UNDERLINE2
+NOU=`tput rmul`         #NO UNDERLINE
+H=`tput smso`           #HIGHLIGHT
+X=`tput sgr0`           #RESET
+C='tput setaf '         #COLOR
+
+for i in 0 1 2 3 4 5 6 7 ; do
+    c=`$C$i` && echo $c${B}Lorem ${U}ipsum$NOU $D dolor \
+        ${U2}sit$NOU $c${H}amet$X.
+done
+
+for i in 0 1 2 3 4 5 6 7 ; do
+    c=`$C$i` && >&2 echo $c${B}stderr Lorem ${U}ipsum$NOU $D dolor \
+        ${U2}sit$NOU $c${H}amet$X.
+done
