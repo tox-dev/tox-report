@@ -10,7 +10,7 @@ console.print("Recording started", style="bold red")
 
 
 @hookimpl
-def tox_configure(config):
+def tox_configure(config):  # pylint: disable=unused-argument
     """Configure hook."""
     console.print("Reporting mode enabled", style="bold red")
 
@@ -22,7 +22,7 @@ def tox_runtest_post(venv):
 
 
 @hookimpl
-def tox_cleanup(session):
+def tox_cleanup(session):  # pylint: disable=unused-argument
     """cleanup hook."""
     console.print("Recording stopped", style="bold red")
 
