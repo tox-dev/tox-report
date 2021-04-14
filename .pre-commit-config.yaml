@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/PyCQA/isort
-    rev: 5.6.4
+    rev: 5.8.0
     hooks:
       - id: isort
   - repo: https://github.com/python/black.git
@@ -9,7 +9,7 @@ repos:
       - id: black
         language_version: python3
   - repo: https://github.com/pre-commit/pre-commit-hooks.git
-    rev: v3.2.0
+    rev: v3.4.0
     hooks:
       - id: end-of-file-fixer
       - id: trailing-whitespace
@@ -18,19 +18,19 @@ repos:
       - id: check-executables-have-shebangs
       - id: check-merge-conflict
       - id: debug-statements
-  - repo: https://gitlab.com/pycqa/flake8.git
-    rev: 3.8.4
+  - repo: https://github.com/pycqa/flake8.git
+    rev: 3.9.0
     hooks:
       - id: flake8
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.25.0
+    rev: v1.26.1
     hooks:
       - id: yamllint
         files: \.(yaml|yml)$
         types: [file, yaml]
         entry: yamllint --strict
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v0.790
+    rev: v0.812
     hooks:
       - id: mypy
         # empty args needed in order to match mypy cli behavior
@@ -40,8 +40,8 @@ repos:
         additional_dependencies:
           - rich
           - tox
-  - repo: https://github.com/pre-commit/mirrors-pylint
-    rev: v2.6.0
+  - repo: https://github.com/pycqa/pylint
+    rev: pylint-2.7.4
     hooks:
       - id: pylint
         additional_dependencies:
