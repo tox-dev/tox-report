@@ -3,7 +3,7 @@ repos:
     rev: 5.8.0
     hooks:
       - id: isort
-  - repo: https://github.com/python/black.git
+  - repo: https://github.com/psf/black
     rev: 20.8b1
     hooks:
       - id: black
@@ -19,7 +19,7 @@ repos:
       - id: check-merge-conflict
       - id: debug-statements
   - repo: https://github.com/pycqa/flake8.git
-    rev: 3.9.0
+    rev: 3.9.1
     hooks:
       - id: flake8
   - repo: https://github.com/adrienverge/yamllint.git
