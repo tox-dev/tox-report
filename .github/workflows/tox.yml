@@ -42,12 +42,12 @@ jobs:
           python -m pip install tox
           tox -e py$(printf "${{ matrix.python }}" | tr -d '.')
         env:
-          COVERAGE_FILE: .coverage.${{ matrix.python }}
+          COVERAGE_FILE: .tox/.coverage.${{ matrix.python }}.db
       - name: upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: coverage-results
-          path: .coverage.${{ matrix.python }}
+          path: .tox/.coverage.*
 
   coverage:
     needs: test
@@ -60,11 +60,12 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: coverage-results
+          path: .tox
       - name: run coverage
         run: |
-          python -m pip install tox codecov
-          tox -e coverage
-          codecov -X pycov -X gcov
+          python3 -m pip install tox codecov
+          python3 -m tox -e coverage
+          codecov -X pycov -X gcov  --root .tox/coverage/log
         env:
           CODECOV_TOKEN: ${{ secrets.codecov_token }}
 
