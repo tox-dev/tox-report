@@ -10,6 +10,17 @@ console.print("Recording started", style="bold red")
 
 
 @hookimpl
+def tox_addoption(parser):
+    """Add --html option."""
+    parser.add_argument(
+        "--html",
+        dest="html_report",
+        default="report.html",
+        help="Path towards where it should save the HTML report of the execution",
+    )
+
+
+@hookimpl
 def tox_configure(config):  # pylint: disable=unused-argument
     """Configure hook."""
     console.print("Reporting mode enabled", style="bold red")
@@ -27,9 +38,11 @@ def tox_cleanup(session):  # pylint: disable=unused-argument
     console.print("Recording stopped", style="bold red")
 
     html = console.export_html(inline_styles=True)
-    with open("report.html", "w") as report_handler:
-        report_handler.write(html)
-        print("Report generated to %s" % os.path.abspath(report_handler.name))
+    filename = session.config.option.html_report
+    if filename:
+        with open(filename, "w") as report_handler:
+            report_handler.write(html)
+            print("Report generated to %s" % os.path.abspath(report_handler.name))
 
 
 def collect_data(current_venv):
