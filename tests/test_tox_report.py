@@ -32,15 +32,12 @@ def test_html_report(tmp_path: Path, filename: str) -> None:
         "commands = python -c \"print('café')\"\n",
         encoding="utf-8",
     )
-    result = subprocess.run(
+    result = subprocess.check_output(
         [sys.executable, "-m", "tox", "-c", str(config), "--html", filename],
         cwd=tmp_path,
-        capture_output=True,
-        text=True,
-        check=True,
+        stderr=subprocess.STDOUT,
+        encoding="utf-8",
         timeout=60,
     )
-    assert (
-        f"Report generated to {os.path.abspath(tmp_path / filename)}" in result.stdout
-    )
+    assert f"Report generated to {os.path.abspath(tmp_path / filename)}" in result
     assert "café" in (tmp_path / filename).read_text(encoding="utf-8")
