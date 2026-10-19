@@ -1,4 +1,5 @@
 """Tests for tox-report."""
+
 import types
 
 
