@@ -10,7 +10,7 @@ on:
       - "**"
   pull_request:
   schedule:
-    - cron: 1 0 * * *  # Run daily at 0:01 UTC
+    - cron: 47 7 * * *  # Run daily at 7:47 UTC
 
 jobs:
   lint:
