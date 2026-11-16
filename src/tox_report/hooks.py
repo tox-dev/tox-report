@@ -1,4 +1,5 @@
 """Tox hook implementations."""
+
 import io
 import os
 
